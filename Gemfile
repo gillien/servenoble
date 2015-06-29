@@ -30,6 +30,7 @@ group :development, :test do
   gem 'poltergeist'
 end
 
+gem 'rails_12factor', group: :production
 # Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
 gem 'bootstrap-sass'
 gem 'bootstrap-growl-rails'
