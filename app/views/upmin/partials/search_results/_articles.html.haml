@@ -1,0 +1,20 @@
+- query.upmin_results.each do |result|
+  %a.search-result-link{ href: result.path }
+    .row.upmin-model{ class: result.color, style: 'margin-bottom: 10px;' }
+      .col-md-12
+        %dl.dl-horizontal
+          %dt Title
+          %dd= result.title
+
+      .col-md-4
+        %b LinkedIn
+        = result.linkedin
+      .col-md-4
+        %b Twitter
+        = result.twitter
+      .col-md-4
+        %b Facebook
+        = result.facebook
+
+      .col-md-12
+        = result.description.html_safe

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uri: MyString
+  description: MyString
+  content: 
+  facebook: 1
+  linkedin: 1
+
+two:
+  uri: MyString
+  description: MyString
+  content: 
+  facebook: 1
+  linkedin: 1
