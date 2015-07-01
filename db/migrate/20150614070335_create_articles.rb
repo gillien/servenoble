@@ -12,7 +12,7 @@ class CreateArticles < ActiveRecord::Migration
       t.integer :facebook, default: 0
       t.integer :linkedin, default: 0
       t.integer :twitter, default: 0
-      t.belongs_to :source, null: false
+      t.string :source_id, null: false
 
       t.timestamps
     end

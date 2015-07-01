@@ -1,11 +1,9 @@
 class Article < ActiveRecord::Base
   belongs_to :source
 
+  enum status:  %i(pending kept archived)
+
   default_scope { order('id DESC') }
 
   validates :entry_id, uniqueness: true
-
-  def update_social_attributes
-    SourceServices::Synchronize.new.call_for(self)
-  end
 end

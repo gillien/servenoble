@@ -11,25 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614140507) do
+ActiveRecord::Schema.define(version: 20150701141453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
   create_table "articles", force: true do |t|
-    t.string   "entry_id",                 null: false
+    t.string   "entry_id",                  null: false
     t.string   "uri"
     t.string   "title"
     t.text     "description"
     t.hstore   "content",     default: {}
-    t.text     "categories",  default: [],              array: true
+    t.text     "categories",  default: [],               array: true
     t.integer  "facebook",    default: 0
     t.integer  "linkedin",    default: 0
     t.integer  "twitter",     default: 0
-    t.integer  "source_id",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "source_id",   default: "0", null: false
+    t.integer  "status",      default: 0
   end
 
   add_index "articles", ["entry_id"], name: "index_articles_on_entry_id", unique: true, using: :btree
