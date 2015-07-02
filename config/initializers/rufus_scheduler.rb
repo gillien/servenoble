@@ -1,6 +1,6 @@
 require 'rufus-scheduler'
 
-scheduler = Rufus::Scheduler.new
+scheduler = Rufus::Scheduler.singleton
 
 scheduler.cron('0 * * * *') do
   Rails.logger.info "Run Source Synchronization at #{Time.now.utc}"
