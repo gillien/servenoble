@@ -38,8 +38,15 @@ module ArticleServices
       social_service_call("https://www.linkedin.com/countserv/count/share?url=#{uri}&format=json")['count']
     end
 
-    def social_service_call(parse_uri)
-      JSON.parse(Net::HTTP.get(URI.parse(parse_uri))) rescue {}
+    def social_service_call(uri)
+      begin
+        parsed_uri  = URI.parse(uri)
+        request     = Net::HTTP.get(parsed_uri)
+
+        JSON.parse(request)
+      rescue
+        {}
+      end
     end
   end
 end

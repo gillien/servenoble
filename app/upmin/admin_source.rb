@@ -4,7 +4,7 @@ class AdminSource < Upmin::Model
   actions :get_last_articles
 
   def get_last_articles
-    SourceServices::Synchronize.new.call_for(self)
+    SourceServices::Synchronize.new(object).call
 
     "Completed"
   end

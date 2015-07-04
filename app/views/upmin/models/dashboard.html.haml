@@ -1,0 +1,37 @@
+- @klass = Upmin::Model.find_class(:Article)
+- @query = Upmin::Query.new(@klass, params[:q], page: 1, per_page: @klass.items_per_page)
+
+.container
+  - if notice
+    .alert.alert-dismissable.alert-info
+      %button.close{"data-dismiss" => "alert", type: "button"}
+        %span{"aria-hidden" => "true"} &times;
+      = notice
+  - if alert
+    .alert.alert-dismissable.alert-danger
+      %button.close{"data-dismiss" => "alert", type: "button"}
+        %span{"aria-hidden" => "true"} &times;
+      = alert
+      - if @model.errors.any?
+        %ul
+          - @model.errors.each do |field, error|
+            %li
+              %b
+                = field
+              = error
+  .row
+    .col-md-8
+      .page-entries-info
+        = page_entries_info(@query.paginated_results)
+      = up_paginate(@query.paginated_results)
+      = up_render(@query)
+      = up_paginate(@query.paginated_results)
+
+    .col-md-4
+      -# TODO(jon): Implement up_search_box
+      = up_render(@klass)
+      .new-button-wrapper
+        %a.btn.btn-block.btn-success{href: upmin_new_model_path(klass: @klass.model_class_name)}
+          Create a new
+          = @klass.humanized_name(:singular)
+        %br

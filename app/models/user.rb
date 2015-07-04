@@ -3,4 +3,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :recoverable, :rememberable, :trackable
+
+  validates :email, presence: true, uniqueness: true, format: Devise::email_regexp
 end

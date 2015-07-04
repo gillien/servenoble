@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.6'
+gem 'rails', '4.2.3'
 
 group :assets do
   # Use CoffeeScript for .js.coffee assets and views
@@ -23,14 +23,23 @@ end
 
 group :development, :test do
   gem 'pry-rails'
-  # gem 'pry-debugger'
   gem 'binding_of_caller'
   gem 'zeus'
   gem 'better_errors'
   gem 'poltergeist'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
-gem 'rails_12factor', group: :production
+group :test do
+  gem 'simplecov', require: false
+end
+
+group :production do
+  gem 'rails_12factor'
+end
+
 # Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
 gem 'bootstrap-sass'
 gem 'bootstrap-growl-rails'
@@ -43,6 +52,7 @@ gem 'upmin-admin', git: 'https://github.com/upmin/upmin-admin-ruby', branch: 'ma
 
 gem 'delayed_job'
 gem 'delayed_job_active_record'
+gem 'workless'
 gem 'colorize'
 
 # Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]

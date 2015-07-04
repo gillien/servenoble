@@ -4,7 +4,7 @@ scheduler = Rufus::Scheduler.singleton
 
 scheduler.cron('0 * * * *') do
   Rails.logger.info "Run Source Synchronization at #{Time.now.utc}"
-  SourceServices::Synchronize.new.call
+  SourceServices::Synchronize.call
   Rails.logger.info "Run Hourly Articles Synchronization at #{Time.now.utc}"
   ArticleServices::Synchronize.call(24.hours.ago, Time.now.utc)
 end

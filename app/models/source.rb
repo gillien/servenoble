@@ -3,6 +3,7 @@ class Source < ActiveRecord::Base
 
   has_many :articles
 
-  validates :key, uniqueness: true, presence: true
-  validates :uri, format: URI::regexp(%w(http https))
+  validates :description, presence: true
+  validates :key, presence: true, uniqueness: true
+  validates :uri, presence: true, format: URI::regexp(%w(http https))
 end
