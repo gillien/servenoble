@@ -1,5 +1,9 @@
 == README
 
+{<img src="https://codeclimate.com/github/gillien/servenoble/badges/gpa.svg" />}[https://codeclimate.com/github/gillien/servenoble]
+
+{<img src="https://codeclimate.com/github/gillien/servenoble/badges/coverage.svg" />}[https://codeclimate.com/github/gillien/servenoble/coverage]
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
