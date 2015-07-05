@@ -6,5 +6,11 @@ class AdminUser < Upmin::Model
 
   def update_password(new_password)
     object.password = new_password
+
+    if object.save
+      'Password updated succesfully'
+    else
+      object.errors.full_messages.to_sentence
+    end
   end
 end

@@ -8,11 +8,13 @@ module SourceServices
     end
 
     def call
-      latest_entry = source.articles.last
+      latest_entry      = source.articles.last
 
-      Feedjira::Feed.fetch_and_parse(source.uri).entries.map do |e|
-        break if latest_entry.present? && e.entry_id != latest_entry.entry_id
+      filtered_entries  = Feedjira::Feed.fetch_and_parse(source.uri).entries.take_while do |e|
+        latest_entry.nil? || e.entry_id == latest_entry.entry_id
+      end
 
+      created_entries   = filtered_entries.map do |e|
         source.articles.create(
           entry_id:     e.entry_id,
           uri:          e.url,
@@ -23,6 +25,8 @@ module SourceServices
           published_at: e.published
         )
       end
+
+      created_entries.count {|o| o.valid? }
     end
 
     class << self

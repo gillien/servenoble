@@ -16,9 +16,11 @@ RSpec.describe SourceServices::Synchronize, type: :service_objects do
   describe 'call' do
     before :each do
       allow(Feedjira::Feed).to receive(:fetch_and_parse).and_return [feed_jira_object]
-      main_service.call
     end
 
-    it { expect(source.articles.first).not_to be_nil }
+    it 'creates one article and return the number of articles created' do
+      expect(main_service.call).to eq 1
+      expect(source.articles.first).not_to be_nil
+    end
   end
 end

@@ -8,7 +8,10 @@ class AdminArticle < Upmin::Model
   end
 
   def update_social_attributes
-    ArticleServices::Synchronize.new(object).call
-    'Completed'
+    if ArticleServices::Synchronize.new(object).call
+      'Completed'
+    else
+      object.errors.full_messages.to_sentence
+    end
   end
 end
