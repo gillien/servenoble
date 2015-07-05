@@ -36,6 +36,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end
 
 # Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
