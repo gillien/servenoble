@@ -30,9 +30,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem "codeclimate-test-reporter"
 end
 
-gem "codeclimate-test-reporter", group: :test, require: nil
 
 group :production do
   gem 'rails_12factor'
