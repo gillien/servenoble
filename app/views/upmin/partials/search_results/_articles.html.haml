@@ -6,6 +6,10 @@
           %dt Title
           %dd= result.title
 
+      .col-md-12
+        %dl.dl-horizontal
+          %dt Categories
+          %dd= result.categories.join(', ')
       .col-md-4
         %b LinkedIn
         = result.linkedin

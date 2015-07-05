@@ -50,6 +50,8 @@ gem 'upmin-admin', git: 'https://github.com/upmin/upmin-admin-ruby', branch: 'ma
 
 gem 'delayed_job'
 gem 'delayed_job_active_record'
+gem 'daemons'
+
 gem 'workless'
 gem 'colorize'
 
