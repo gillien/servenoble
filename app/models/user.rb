@@ -6,4 +6,13 @@ class User < ActiveRecord::Base
 
   validates :password, presence: true
   validates :email, presence: true, uniqueness: true, format: Devise::email_regexp
+
+  before_validation :generate_password, on: :create
+
+  private #############
+  def generate_password
+    if password.blank?
+      self.password = Devise.friendly_token.first(8)
+    end
+  end
 end
