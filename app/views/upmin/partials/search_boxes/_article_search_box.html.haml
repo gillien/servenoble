@@ -1,0 +1,22 @@
+%button.btn.btn-primary.pull-right{ "data-toggle"=>"collapse", "data-target" => "#search", 'aria-expanded' => false, "aria-controls" => "search"}
+  Search
+
+.collapse#search.light_blue.upmin-model{ style: 'position: absolute; background-color: white; z-index: 5000; width: 359px; left: -50px; top: 25px;' }
+  = form_tag(klass.search_path, method: :get) do
+    .form-group
+      = label(:q, 'status_cont', 'Status')
+      = select(:q, 'status_eq', Article.statuses, { include_blank: true }, { class: 'form-control' })
+
+      = label(:q, 'source_id_cont', 'Source')
+      = select(:q, 'source_id_eq', Source.pluck(:key), { include_blank: true }, { class: 'form-control' })
+
+    - [:facebook, :linkedin, :twitter].each do |attr_name|
+      .form-group
+        = label(:q, "#{attr_name}_cont", attr_name.to_s.capitalize.gsub('_', ' '))
+        .input-group
+          .input-group-addon From
+          = number_field(:q, "#{attr_name}_gteq", class: 'form-control')
+          .input-group-addon to
+          = number_field(:q, "#{attr_name}_lteq", class: 'form-control')
+
+    = submit_tag('Filter', class: 'btn btn-primary btn-block')

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701141453) do
+ActiveRecord::Schema.define(version: 20150708143430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,11 +56,15 @@ ActiveRecord::Schema.define(version: 20150701141453) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "sources", id: false, force: :cascade do |t|
-    t.string   "key",         limit: 255, null: false
-    t.string   "uri",         limit: 255
-    t.string   "description", limit: 255
+    t.string   "key",               limit: 255, null: false
+    t.string   "uri",               limit: 255
+    t.string   "description",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "sources", ["key"], name: "index_sources_on_key", unique: true, using: :btree

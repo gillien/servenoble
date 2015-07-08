@@ -1,0 +1,11 @@
+- is_nil = model.new_record? ? false : attribute.value.nil?
+
+.form-group{class: attribute.errors? ? "has-error" : ""}
+  %label{for: attribute.form_id}
+    = attribute.label_name
+
+  .input-group
+    %p.well
+      %img{src: attribute.value.url(:thumb), class: "img-responsive" }
+    - if attribute.editable? && f = form_builder
+      = f.file_field(attribute.name, value: attribute.value, class: "form-control")

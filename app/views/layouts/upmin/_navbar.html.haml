@@ -8,7 +8,7 @@
         %span.icon-bar
         %span.icon-bar
     #navbar-main.navbar-collapse.collapse
-      %ul.nav.navbar-nav
+      %ul.nav.navbar-nav.navbar-right
         - Upmin::Model.all.each do |m|
           %li
             %a{href: m.search_path}
@@ -18,3 +18,4 @@
             .icon
             %span.item-text
               = t('.logout')
+

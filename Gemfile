@@ -19,6 +19,7 @@ group :assets do
   gem 'autoprefixer-rails'
   # Ruby BSON serialization
   gem 'haml'
+  gem 'bootstrap-glyphicons'
 end
 
 group :development, :test do
@@ -73,5 +74,5 @@ gem 'exception_notification'
 gem 'turbolinks'
 
 gem 'feedjira'
-#  check how many times a URL has been shared on Reddit, Digg, Twitter, Facebook, LinkedIn, GoogleBuzz and StumbleUpon!
-gem 'share_counts'
+
+gem 'paperclip'
