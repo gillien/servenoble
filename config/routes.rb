@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  authenticate :user, lambda { |u| u.persisted? } do
+    mount Upmin::Engine => '/admin', as: 'admin'
+  end
+
   devise_for :users
 
-  authenticate :user, lambda { |u| u.persisted? } do
-    mount Upmin::Engine => '/', as: "admin"
-  end
+  resources :articles, 	only: [:index]
+  resource :dashboard,  only: [:index]
+
+  root 'dashboard#index'
 end
