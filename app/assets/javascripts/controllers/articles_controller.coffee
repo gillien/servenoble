@@ -1,16 +1,21 @@
 controllers = angular.module('controllers', ['ui.bootstrap'])
 controllers.controller("ArticlesController", [ '$scope', '$routeParams', '$location', '$resource', '$sce'
   ($scope, $routeParams, $location, $resource, $sce)->
+    $scope.searchIsCollapsed = true
+    $scope.criteria = $routeParams
 
-    Article = $resource('/articles/:articleId', { articleId: "@id", format: 'json' })
-
-    $scope.search = (keywords)->  
-      $location.path("/").search('keywords', keywords)
+    $scope.search = ()->  
+      $location.path("/").search($scope.criteria)
 
     $scope.getHtml = (content)->
       $sce.trustAsHtml(content)
 
-    $routeParams.keywords ||= ''
+    $scope.list = ->
+      Article = $resource('/articles/:articleId', { articleId: "@id", format: 'json' })
+      Article.query(
+        $scope.criteria, 
+        (results)-> $scope.articles = results
+      )
 
-    Article.query(q: $routeParams.keywords, (results)-> $scope.articles = results)
+    $scope.list()
 ])

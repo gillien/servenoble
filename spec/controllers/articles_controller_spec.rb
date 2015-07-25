@@ -13,20 +13,36 @@ RSpec.describe ArticlesController, type: :controller do
     let(:source)   { FactoryGirl.create(:source) }
     let!(:article) { FactoryGirl.create(:article, source: source, description: 'baked et voila!') }
 
-    before do
-      get :index, format: :json, q: keywords
+    context 'with criteria' do
+      before do
+        get :index, format: :json, keywords: keywords
+      end
+
+      subject(:results) { JSON.parse(response.body) }
+
+      let(:keywords) { 'baked' }
+
+      it 'returns one article' do
+        expect(results.size).to eq(1)
+      end
+
+      it "includes article title" do
+        expect(results[0]["title"]).to eq article.title
+      end
     end
 
-    subject(:results) { JSON.parse(response.body) }
+    context 'without criteria' do
+      before do
+        get :index, format: :json
+      end
 
-    let(:keywords) { 'baked' }
+      subject(:results) { JSON.parse(response.body) }
 
-    it 'returns one article' do
-      expect(results.size).to eq(1)
-    end
+      let(:keywords) { 'baked' }
 
-    it "includes article title" do
-      expect(results[0]["title"]).to eq article.title
+      it 'returns one article' do
+        expect(results.size).to eq(1)
+      end
     end
   end
 end

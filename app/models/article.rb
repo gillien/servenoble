@@ -15,12 +15,13 @@ class Article < ActiveRecord::Base
   validates :uri, presence: true, format: URI::regexp(%w(http https))
 
   class << self
-    def search(query)
-      if query.present?
-        search_or_none(query)
-      else
-        order(created_at: :desc)
-      end
+    def search(criteria)
+      req = criteria[:keywords].present? ? search_or_none(criteria[:keywords]) : order(created_at: :desc)
+
+      req = req.where(source_id:  criteria[:source_id])   if criteria[:source_id].present?
+      req = req.where(status:     criteria[:status])      if criteria[:status].present?
+
+      req
     end
   end
 end

@@ -7,14 +7,14 @@ RSpec.describe Article, :type => :model do
   it { expect(article).to be_valid }
 
   describe 'search' do
-    it { expect(Article.search('query')).to  eq [] }
+    it { expect(Article.search(keywords: 'query', source_id: source.id, status: 1)).to  eq [] }
 
     context 'it has no criteria' do
       before :each do
         expect(Article).not_to receive(:search_or_none)
       end
 
-      it { expect(Article.search('')).to  eq [] }
+      it { expect(Article.search({})).to  eq [] }
     end
   end
 end
