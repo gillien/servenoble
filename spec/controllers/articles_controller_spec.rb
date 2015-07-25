@@ -1,36 +1,32 @@
 require 'spec_helper'
 
-RSpec.describe ArticlesController, :type => :controller do
+RSpec.describe ArticlesController, type: :controller do
   render_views
+
+  let(:user)   { FactoryGirl.create(:user) }
+
+  before :each do
+    sign_in(user)
+  end
 
   describe "index" do
     let(:source)   { FactoryGirl.create(:source) }
-    let!(:article) { FactoryGirl.create(:article, source: source) }
+    let!(:article) { FactoryGirl.create(:article, source: source, description: 'baked et voila!') }
 
     before do
-      xhr :get, :index, format: :json, keywords: keywords
+      get :index, format: :json, q: keywords
     end
 
-    subject(:results) { JSON.parse(response.body)['articles'] }
+    subject(:results) { JSON.parse(response.body) }
 
-    context "when the search finds results" do
-      let(:keywords) { 'baked' }
+    let(:keywords) { 'baked' }
 
-      it 'returns one article' do
-        expect(results.size).to eq(1)
-      end
-
-      it "includes article title" do
-        expect(results[0]["title"]).to eq article.title
-      end
+    it 'returns one article' do
+      expect(results.size).to eq(1)
     end
 
-    context "when the search doesn't find results" do
-      let(:keywords) { 'foo' }
-
-      it 'returns no results' do
-        expect(results.size).to eq(0)
-      end
+    it "includes article title" do
+      expect(results[0]["title"]).to eq article.title
     end
   end
 end

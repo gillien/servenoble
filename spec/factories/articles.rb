@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :article do
-    entry_id     'entry_id'
+    sequence(:entry_id)  { |n| "ENTRY_#{n}" }
+
     uri          'http://url'
     description  'description'
     title        'title'

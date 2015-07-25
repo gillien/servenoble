@@ -1,22 +1,38 @@
-%header.row
-  %h1.text-center.col-md-6.col-md-offset-3 Find Recipes
-%section.row
-  %form
-    .form-group.col-md-6.col-md-offset-3
-      %label.sr-only{ for: 'keywords'} Keywords
-      %input.form-control{ autofocus: '', placeholder: 'Recipe name, e.g. Baked Potato', type: 'text', name: 'keywords', 'ng-model' => 'keywords' }
-    .form-group.col-md-6.col-md-offset-3.text-center
-      %button.btn.btn-primary.btn-lg{ 'ng-click' => 'search(keywords)' } Search
-%hr
-  %section.row{ 'ng-if' => 'articles'}
-    %h1.text-center.h2 Results
+.container
+  %header.row
+    %h1.text-center.col-md-6.col-md-offset-3 Find Recipes
+  %section.row
+    %form
+      .form-group.col-md-6.col-md-offset-3
+        %label.sr-only{ for: 'keywords'} Keywords
+        %input.form-control{ autofocus: '', placeholder: 'Recipe name, e.g. Baked Potato', type: 'text', name: 'keywords', 'ng-model' => 'keywords' }
+      .form-group.col-md-6.col-md-offset-3.text-center
+        %button.btn.btn-primary.btn-lg{ 'ng-click' => 'search(keywords)' } Search
+
+  .row.upmin-model.bs-callout.bs-callout-info{'ng-repeat' => 'article in articles'}
+    .row{ style: 'min-height: 50px;' }
+      .col-xs-9{style: "padding-left: 55px;", 'ng-click' => 'article.isCollapsed = !article.isCollapsed'}
+        %img{src: "{{article.source.logo_thumb}}", style: "position: absolute;left:0px;top: -15px"}
+        {{article.title}}
+      .col-xs-3
+        %i.fa.fa-star.fa-2x.pull-right{ 'ng-click' => 'star(article)' }
+        %i.fa.fa-folder-open.fa-2x.pull-right{ 'ng-click' => 'open(article)' }
+        %i.fa.fa-eye.fa-2x.pull-right{ 'ng-click' => 'eye(article)' }
     
-    %ul.list-unstyled
-      %li{'ng-repeat' => 'article in articles'}
-        %section.well.col-md-6.col-md-offset-3
-          %h1.h3.col-md-6.text-right{style: 'margin-top: 0'}
-            %a{href: '#'} {{article.name}}
-          .col-md-6
-            %button.btn.btn-info Edit
-            %button.btn.btn-danger Delete
-    
+    .collapse{collapse: "!article.isCollapsed"}
+      .col-xs-12
+        %dl.dl-horizontal
+          %dt Categories
+          %dd {{article.categories.join(', ')}}
+      .col-xs-12{style: 'overflow:hidden', 'ng-bind-html' => 'getHtml(article.description)'} 
+
+    .row
+      .col-xs-3.col-md-2
+        %b LinkedIn
+        {{article.linkedin}}
+      .col-xs-3.col-md-2
+        %b Twitter
+        {{article.twitter}}
+      .col-xs-3.col-md-2
+        %b Facebook
+        {{article.facebook}}

@@ -1,5 +1,8 @@
-json.articles do |json|
-  json.array!(@query.upmin_results) do |article|
-    json.extract! article, :id, :title, :uri, :description, :status, :facebook, :linkedin, :twitter
+json.array!(@articles) do |article|
+  json.(article, :id, :title, :uri, :description, :categories, :status, :facebook, :linkedin, :twitter)
+
+  json.source do |json|
+    json.logo_thumb article.source.logo.url(:thumb)
   end
+
 end

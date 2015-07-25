@@ -34,6 +34,8 @@ gem 'devise-bootstrap-views'
 # Upmin Admin is a framework for creating powerful admin backends with minimal effort.
 gem 'upmin-admin', git: 'https://github.com/upmin/upmin-admin-ruby', branch: 'master'
 
+gem 'pg_search'
+
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'daemons'
@@ -72,4 +74,6 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'teaspoon-jasmine'
+  gem 'phantomjs'
 end
