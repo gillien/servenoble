@@ -4,18 +4,18 @@ controllers.controller("ArticlesController", [ '$scope', '$routeParams', '$locat
     $scope.searchIsCollapsed = true
     $scope.criteria = $routeParams
 
-    $scope.search = ()->  
+    $scope.list = ()->  
       $location.path("/").search($scope.criteria)
 
     $scope.getHtml = (content)->
       $sce.trustAsHtml(content)
 
-    $scope.list = ->
+    $scope.search = ->
       Article = $resource('/articles/:articleId', { articleId: "@id", format: 'json' })
       Article.query(
         $scope.criteria, 
         (results)-> $scope.articles = results
       )
 
-    $scope.list()
+    $scope.search()
 ])
