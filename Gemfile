@@ -63,7 +63,8 @@ gem 'exception_notification'
 gem 'feedjira'
 
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk-v1', '1.65.0'
+gem 'aws-sdk', '~> 2'
 
 group :development, :test do
   gem 'pry-rails'

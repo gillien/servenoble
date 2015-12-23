@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  authenticate :user, lambda { |u| u.persisted? } do
+  authenticated :user, lambda { |u| u.persisted? } do
     mount Upmin::Engine => '/admin', as: 'admin'
+
+    match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
   end
 
   devise_for :users
