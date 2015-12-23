@@ -65,23 +65,24 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.default_url_options  = { host: 'http://bordernone.herokuapp.com' }
-  config.action_mailer.default_options      = { from: "noreply@bordernone.com" }
+  config.action_mailer.default_options      = { from: "noreply@ilink-consulting.com" }
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :user_name => '38775e2168049e956',
-    :password => '08c7d574443014',
-    :address => 'mailtrap.io',
-    :domain => 'mailtrap.io',
-    :port => '2525',
-    :authentication => :cram_md5
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
   }
 
   Rails.application.config.middleware.use ExceptionNotification::Rack,
   :email => {
     :email_prefix => "[PRODUCTION] ",
-    :sender_address => %{"notifier" <notifier@bordernone.com>},
-    :exception_recipients => %w{exceptions@bordernone.com}
+    :sender_address => %{"notifier" <notifier@ilink-consulting.com>},
+    :exception_recipients => %w{guillaume.illien@ilink-consulting.com}
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

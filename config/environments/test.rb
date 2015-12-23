@@ -16,6 +16,7 @@ Rails.application.configure do
   config.serve_static_file  = true
   config.static_cache_control = 'public, max-age=3600'
   config.active_record.raise_in_transactional_callbacks = true
+  config.assets.debug = true
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
