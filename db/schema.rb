@@ -11,29 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725045620) do
+ActiveRecord::Schema.define(version: 20150802102239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
   create_table "articles", force: :cascade do |t|
-    t.string   "entry_id",     limit: 255,               null: false
+    t.string   "entry_id",     limit: 255,                 null: false
     t.string   "uri",          limit: 255
     t.string   "title",        limit: 255
     t.text     "description"
     t.hstore   "content",                  default: {}
-    t.text     "categories",               default: [],               array: true
+    t.text     "categories",               default: [],                 array: true
     t.integer  "facebook",                 default: 0
     t.integer  "linkedin",                 default: 0
     t.integer  "twitter",                  default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "source_id",                default: "0", null: false
+    t.string   "source_id",                default: "0",   null: false
     t.integer  "status",                   default: 0
     t.integer  "comments",                 default: 0
     t.string   "author"
     t.datetime "published_at"
+    t.boolean  "is_read",                  default: false
   end
 
   add_index "articles", ["entry_id"], name: "index_articles_on_entry_id", unique: true, using: :btree
@@ -66,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150725045620) do
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "sources", id: false, force: :cascade do |t|
-    t.string   "key",               limit: 255, null: false
+    t.string   "key",               limit: 255,              null: false
     t.string   "uri",               limit: 255
     t.string   "description",       limit: 255
     t.datetime "created_at"
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150725045620) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "language",                      default: ""
   end
 
   add_index "sources", ["key"], name: "index_sources_on_key", unique: true, using: :btree

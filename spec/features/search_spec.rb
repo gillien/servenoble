@@ -19,14 +19,22 @@ feature "Looking for articles", js: true do
   scenario "finding recipes" do
     visit '/'
 
-    fill_in 'keywords', with: 'baked'
     click_on "Search"
 
+    within(".search form") do
+      fill_in 'keywords', with: 'baked'
+      click_on "Search"
+    end
+  
     expect(page).to have_content("Baked Potato")
     expect(page).to have_content("Baked Brussel Sprouts")
 
-    fill_in 'keywords', with: 'RoBake'
     click_on "Search"
+
+    within(".search form") do
+      fill_in 'keywords', with: 'RoBake'
+      click_on "Search"
+    end
 
     expect(page).not_to have_content("Baked Potato")
   end

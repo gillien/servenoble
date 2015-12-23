@@ -1,4 +1,16 @@
 #articles {
+  .search {
+    .bs-callout {
+      position: absolute; 
+      background-color: white; 
+      z-index: 5000; 
+      width: 359px; 
+      right: 0;
+      top: 35px;
+      height: auto;
+    }
+  }
+
   .bs-callout {
     background-color: #f0f7fd;
     border-color: #d0e3f0;
@@ -33,19 +45,15 @@
       }
     }
 
+    .fa {
+      cursor: pointer;
+    }
+    .fa-star {
+      cursor: none;
+    }
+
     .description {
       overflow: hidden;
-    }
-  }
-  .search {
-    .bs-callout {
-      position: absolute; 
-      background-color: white; 
-      z-index: 5000; 
-      width: 359px; 
-      left: -88px; 
-      top: 15px; 
-      height: auto;
     }
   }
 }

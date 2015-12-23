@@ -6,6 +6,7 @@ asset 'bootstrap-sass-official'
 asset 'angular-resource'
 asset 'angular-mocks'
 asset 'angular-bootstrap'
+asset 'ngInfiniteScroll'
 
 asset 'fontawesome'
 # vim: ft=ruby

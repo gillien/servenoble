@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :articles, 	only: [:index]
+  resources :articles, 	only: [:index, :update]
   resource :dashboard,  only: [:index]
 
   root 'dashboard#index'

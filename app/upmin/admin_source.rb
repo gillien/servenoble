@@ -1,6 +1,6 @@
 class AdminSource < Upmin::Model
-  attributes :key, :uri, :logo, :description, :updated_at
-  form_attributes :key, :uri, :logo, :description
+  attributes :key, :uri, :logo, :language, :description, :updated_at
+  form_attributes :key, :uri, :language, :logo, :description
 
   actions :get_last_articles
 

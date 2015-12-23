@@ -17,5 +17,6 @@
 //= require angular-resource/angular-resource
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require angular-rails-templates
+//= require ngInfiniteScroll/build/ng-infinite-scroll
 //= require_tree ./templates
 //= require_tree .

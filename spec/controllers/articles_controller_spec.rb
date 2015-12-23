@@ -45,4 +45,36 @@ RSpec.describe ArticlesController, type: :controller do
       end
     end
   end
+
+
+  describe "put" do
+    let(:source)   { FactoryGirl.create(:source) }
+    let!(:article) { FactoryGirl.create(:article, source: source, description: 'baked et voila!') }
+
+    context 'update status valid' do
+      before do
+        put :update, format: :json, status: 'approved', id: article.id
+      end
+
+      subject(:results) { JSON.parse(response.body) }
+
+      it 'returns one article' do
+        expect(results['article']).to be_present
+        expect(results['message']).to be_blank
+      end
+    end
+
+    context 'update status invalid' do
+      before do
+        put :update, format: :json, status: '', id: article.id
+      end
+
+      subject(:results) { JSON.parse(response.body) }
+
+      it 'returns one article' do
+        expect(results['article']).to     be_present
+        expect(results['message']).not_to be_blank
+      end
+    end
+  end
 end

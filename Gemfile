@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.5'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -22,7 +22,6 @@ group :assets do
   # Simply add the gem:
   gem 'autoprefixer-rails'
 end
-
 
 group :production do
   gem 'rails_12factor'
@@ -55,6 +54,8 @@ gem 'angular-rails-templates'
 gem 'whenever', require: false
 gem 'rufus-scheduler'
 
+gem 'language_list' # List languages we could use into our system and even more...
+
 # Exception notification for Rails apps
 gem 'exception_notification'
 
@@ -76,4 +77,5 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'teaspoon-jasmine'
   gem 'phantomjs'
+  gem 'mailcatcher'
 end
