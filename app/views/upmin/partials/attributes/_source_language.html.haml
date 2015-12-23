@@ -1,0 +1,8 @@
+.form-group{class: attribute.errors? ? "has-error" : ""}
+  %label{for: attribute.form_id}
+    = attribute.label_name
+  - if attribute.editable? && f = form_builder
+    = f.select(attribute.name, LanguageList::COMMON_LANGUAGES.map {|l| [l.name, l.iso_639_3] }, { include_blank: true }, class: "form-control")
+  - else
+    %p.well
+      = attribute.value

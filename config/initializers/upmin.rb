@@ -2,7 +2,7 @@
 
 Upmin.configure do |config|
   # List of models you want to appear in your Upmin Admin pages - default is all Models
-  config.models = [:source, :article, :user]
+  config.models = [:source, :user]
 
   # Overrides the default list of colors used to highlight models.
   # config.colors = [::light_blue, :blue_green, :red, :yellow, :orange, :purple, :dark_blue, :dark_red, :green]

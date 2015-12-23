@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require angular/angular
+//= require angular-route/angular-route
+//= require angular-resource/angular-resource
+//= require angular-bootstrap/ui-bootstrap-tpls
+//= require angular-rails-templates
+//= require ngInfiniteScroll/build/ng-infinite-scroll
+//= require_tree ./templates
 //= require_tree .

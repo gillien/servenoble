@@ -1,21 +1,23 @@
 .navbar.navbar-default.navbar-static-top
   .container
     .navbar-header
-      %a.navbar-brand{href: root_path}
-        BorderNone Admin
+      %a.navbar-brand{ href: '/' }
+        BorderNone
       %button.navbar-toggle{ type: "button", data: { target: "#navbar-main", toggle: "collapse" }}
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-    #navbar-main.navbar-collapse.collapse
-      %ul.nav.navbar-nav.navbar-right
-        - Upmin::Model.all.each do |m|
+
+    - if current_user.present?
+      #navbar-main.navbar-collapse.collapse
+        %ul.nav.navbar-nav.navbar-right
+          - Upmin::Model.all.each do |m|
+            %li
+              %a{href: m.search_path}
+                = m.humanized_name(:plural)
           %li
-            %a{href: m.search_path}
-              = m.humanized_name(:plural)
-        %li
-          %a{href: Rails.application.routes.url_helpers.destroy_user_session_path, target: "_self", 'data-method' => 'delete'}
-            .icon
-            %span.item-text
-              = t('.logout')
+            %a{ href: Rails.application.routes.url_helpers.destroy_user_session_path, target: "_self", 'data-method' => 'delete' }
+              .icon
+              %span.item-text
+                = t('.logout')
 

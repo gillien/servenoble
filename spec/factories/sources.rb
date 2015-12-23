@@ -5,5 +5,6 @@ FactoryGirl.define do
     sequence(:key)  { |n| "SOURCEKEY#{n}" }
     uri 'http://www.bordernone.com'
     description 'bordernone'
+    language 'fra'
   end
 end
