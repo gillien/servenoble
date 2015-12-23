@@ -14,9 +14,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-
 /coverage/*.json
 
-Dockerfile
-
-fig.yml
+/public/system
