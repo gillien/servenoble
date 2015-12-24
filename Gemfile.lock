@@ -202,6 +202,8 @@ GEM
     newrelic_rpm (3.14.1.311)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
+    non-stupid-digest-assets (1.0.6)
+      sprockets (>= 2.0)
     orm_adapter (0.5.0)
     paperclip (4.3.2)
       activemodel (>= 3.2.0)
@@ -401,6 +403,7 @@ DEPENDENCIES
   language_list
   mailcatcher
   newrelic_rpm
+  non-stupid-digest-assets
   paperclip
   pg
   pg_search
