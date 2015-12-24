@@ -50,6 +50,7 @@ gem 'envb-rails'
 gem 'jbuilder'
 gem 'bower-rails'
 gem 'angular-rails-templates'
+gem 'non-stupid-digest-assets'
 
 #Whenever is a Ruby gem that provides a clear syntax for writing and deploying cron jobs.
 gem 'whenever', require: false
