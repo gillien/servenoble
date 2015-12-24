@@ -7,6 +7,7 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.paths << Rails.root.join("vendor", "bower_components", "bootstrap-sass-official", "assets", "fonts")
+Rails.application.config.assets.paths << Rails.root.join("vendor", "bower_components", "fontawesome", "fonts")
 
 Rails.application.config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|woff2)$)
 Rails.application.config.assets.precompile << %w(teaspoon.css teaspoon-teaspoon.js teaspoon-jasmine.js)

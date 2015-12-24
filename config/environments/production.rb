@@ -64,7 +64,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options  = { host: 'http://bordernone.herokuapp.com' }
+  config.action_mailer.default_url_options  = { host: 'https://bordernone.herokuapp.com' }
   config.action_mailer.default_options      = { from: "noreply@ilink-consulting.com" }
 
   config.action_mailer.delivery_method = :smtp
