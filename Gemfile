@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
+ruby "2.2.4"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.5.1'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -31,7 +32,7 @@ end
 gem 'devise'
 gem 'devise-bootstrap-views'
 # Upmin Admin is a framework for creating powerful admin backends with minimal effort.
-gem 'upmin-admin', git: 'https://github.com/upmin/upmin-admin-ruby', branch: 'master'
+gem 'upmin-admin'
 
 gem 'pg_search'
 
@@ -64,8 +65,6 @@ gem 'exception_notification'
 gem 'feedjira'
 
 gem 'paperclip'
-gem 'aws-sdk-v1', '1.65.0'
-gem 'aws-sdk', '~> 2'
 
 group :development, :test do
   gem 'pry-rails'
