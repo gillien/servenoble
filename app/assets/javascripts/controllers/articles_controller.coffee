@@ -1,7 +1,5 @@
-controllers = angular.module('controllers', ['ui.bootstrap',  'infinite-scroll'])
-
-controllers.controller("ArticlesController", [ '$scope', '$routeParams', '$location', '$resource', '$sce'
-  ($scope, $routeParams, $location, $resource, $sce)->
+servenoble.controller("ArticlesController", [ '$scope', '$routeParams', '$location', '$resource', '$sce', 'toaster',
+  ($scope, $routeParams, $location, $resource, $sce, toaster)->
     Article = $resource('/articles/:id', { format: 'json' }, { 'update': { method: 'PUT' }})
 
     $scope.searchIsCollapsed  = true
@@ -9,7 +7,7 @@ controllers.controller("ArticlesController", [ '$scope', '$routeParams', '$locat
     $scope.current_page       = 0
 
     $scope.list = ()->  
-      $location.path("/").search($scope.criteria)
+      $location.path('/').search($scope.criteria)
 
     $scope.getHtml = (content)->
       $sce.trustAsHtml(content)
@@ -28,12 +26,11 @@ controllers.controller("ArticlesController", [ '$scope', '$routeParams', '$locat
       article.isCollapsed = !article.isCollapsed
 
       if (article.is_read == false)
-        article.is_read     = true
-        Article.update({ id: article.id }, article)
+        $scope.read_unread(article)
 
     $scope.read_unread = (article) ->
       article.is_read = !article.is_read
-      Article.update({ id: article.id }, article)
+      $scope.update(article)
 
     $scope.archive = (article) ->
       if article.status == 'archived'
@@ -41,13 +38,27 @@ controllers.controller("ArticlesController", [ '$scope', '$routeParams', '$locat
       else
         article.status = 'archived'
 
-      Article.update({ id: article.id }, article)
+      $scope.update(article)
 
     $scope.translate = (article) ->
       return if article.status != 'pending'
 
       article.status = 'approved'
-      Article.update({ id: article.id }, article)
+      $scope.update(article)
+
+    $scope.update = (article) ->
+      Article.update({id: article.id}, article,
+        ((response)-> 
+          toaster.pop(
+            type: 'success'
+            title: 'Article updated successfully.'
+            showCloseButton: true)),
+        ((error) -> 
+          toaster.pop(
+            type: 'error'
+            title: error.message
+            showCloseButton: true))
+      )
 
     $scope.search = (page = 0) ->
       $scope.criteria.page = page

@@ -16,7 +16,9 @@
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
 //= require angular-bootstrap/ui-bootstrap-tpls
+//= require angularjs-toaster/toaster.min
 //= require angular-rails-templates
 //= require ngInfiniteScroll/build/ng-infinite-scroll
+//= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
 //= require_tree ./templates
 //= require_tree .

@@ -11,5 +11,7 @@ FactoryGirl.define do
     categories   ['cat1', 'cat2']
     author       'Author'
     published_at Time.now.utc
+
+    source
   end
 end
