@@ -4,29 +4,17 @@
 
 {<img src="https://codeclimate.com/github/gillien/servenoble/badges/coverage.svg" />}[https://codeclimate.com/github/gillien/servenoble/coverage]
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Installation
+## Production
+### Web Server
+Follow all instructions here :
+https://gorails.com/deploy/ubuntu/14.04
+with Ruby 2.2.4 and rbenv
 
-Things you may want to cover:
+also, if you need to configure a public ssh key, follow the instructions below :
+https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
 
-* Ruby version
+NB : you will need to add your local public key into the production server, and also the server public key in github. No public keys are available by default in the server, but you can do it following digital ocean instruction.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Install nodejs :
+sudo apt-get install nodejs

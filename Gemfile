@@ -67,6 +67,13 @@ gem 'feedjira'
 
 gem 'paperclip'
 
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+
+# Add this if you're using rbenv
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
+
 group :development, :test do
   gem 'pry-rails'
   gem 'binding_of_caller'
