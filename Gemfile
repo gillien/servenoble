@@ -27,6 +27,7 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'newrelic_rpm'
+  gem 'aws-sdk'
 end
 
 gem 'devise'
