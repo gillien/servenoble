@@ -2,9 +2,10 @@
 
 FactoryGirl.define do
   factory :source do
-    sequence(:key)  { |n| "SOURCEKEY#{n}" }
-    uri 'http://www.bordernone.com'
+    sequence(:key) { |n| "SOURCEKEY#{n}" }
+
+    uri         'http://www.bordernone.com'
     description 'bordernone'
-    language 'fra'
+    language    'fra'
   end
 end

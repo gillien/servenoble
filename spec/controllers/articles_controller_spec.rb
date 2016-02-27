@@ -9,7 +9,7 @@ RSpec.describe ArticlesController, type: :controller do
     sign_in(user)
   end
 
-  describe "index" do
+  describe 'index' do
     let(:source)   { FactoryGirl.create(:source) }
     let!(:article) { FactoryGirl.create(:article, source: source, description: 'baked et voila!') }
 
@@ -26,8 +26,8 @@ RSpec.describe ArticlesController, type: :controller do
         expect(results.size).to eq(1)
       end
 
-      it "includes article title" do
-        expect(results[0]["title"]).to eq article.title
+      it 'includes article title' do
+        expect(results[0]['title']).to eq article.title
       end
     end
 
@@ -46,8 +46,7 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
-
-  describe "put" do
+  describe 'put' do
     let(:source)   { FactoryGirl.create(:source) }
     let!(:article) { FactoryGirl.create(:article, source: source, description: 'baked et voila!') }
 

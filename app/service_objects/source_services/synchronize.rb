@@ -1,6 +1,7 @@
 module SourceServices
+  ##
+  # Synchronize new articles for a given Source
   class Synchronize
-
     attr_reader :source
 
     def initialize(source)
@@ -8,25 +9,19 @@ module SourceServices
     end
 
     def call
-      latest_entry      = source.articles.last
-
-      filtered_entries  = Feedjira::Feed.fetch_and_parse(source.uri).entries.take_while do |e|
-        latest_entry.nil? || e.entry_id == latest_entry.entry_id
-      end
-
-      created_entries   = filtered_entries.map do |e|
+      filtered_entries.map do |e|
         source.articles.create(
-          entry_id:     e.entry_id,
-          uri:          e.url,
-          description:  e.summary,
-          title:        e.title,
-          categories:   e.categories,
-          author:       e.author,
-          published_at: e.published
+          entry_id: e.entry_id, uri: e.url, description:  e.summary, title: e.title,
+          categories: e.categories, author: e.author, published_at: e.published
         )
-      end
+      end.count(&:valid?)
+    end
 
-      created_entries.count {|o| o.valid? }
+    def filtered_entries
+      @filtered_entries ||=
+        Feedjira::Feed.fetch_and_parse(source.uri).entries.take_while do |e|
+          source.articles.last.nil? || e.entry_id == source.articles.last.entry_id
+        end
     end
 
     class << self

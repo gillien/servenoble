@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.2.4"
-
+ruby '2.2.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
@@ -19,8 +18,8 @@ group :assets do
   gem 'sass-rails'
   # Use jquery as the JavaScript library
   gem 'jquery-rails'
-  # It is also recommended to use Autoprefixer with Bootstrap to add browser vendor prefixes automatically.
-  # Simply add the gem:
+  # It is also recommended to use Autoprefixer with Bootstrap to add browser vendor prefixes
+  # automatically. Simply add the gem:
   gem 'autoprefixer-rails'
 end
 
@@ -54,7 +53,7 @@ gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'non-stupid-digest-assets'
 
-#Whenever is a Ruby gem that provides a clear syntax for writing and deploying cron jobs.
+# Whenever is a Ruby gem that provides a clear syntax for writing and deploying cron jobs.
 gem 'whenever', require: false
 gem 'rufus-scheduler'
 
@@ -71,8 +70,10 @@ gem 'capistrano'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 
+gem 'rubocop', require: false
+
 # Add this if you're using rbenv
-gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'capistrano-rbenv', github: 'capistrano/rbenv'
 
 group :development, :test do
   gem 'pry-rails'

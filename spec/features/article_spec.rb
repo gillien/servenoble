@@ -1,41 +1,42 @@
 require 'spec_helper.rb'
 
-feature "Looking for articles", js: true do
-
+feature 'Looking for articles', js: true do
   let!(:user)           { FactoryGirl.create(:user) }
   let(:source)          { FactoryGirl.create(:source) }
   let!(:baked_potato)   { FactoryGirl.create(:article, source: source, title: 'Baked Potato') }
-  let!(:baked_sprouts)  { FactoryGirl.create(:article, source: source, title: 'Baked Brussel Sprouts') }
-  
+  let!(:baked_sprouts)  {
+    FactoryGirl.create(:article, source: source, title: 'Baked Brussel Sprouts')
+  }
+
   before :each do
     visit '/'
 
-    fill_in "user_email",     with: user.email
-    fill_in "user_password",  with: user.password
+    fill_in 'user_email',     with: user.email
+    fill_in 'user_password',  with: user.password
 
-    click_on "Sign in"
+    click_on 'Sign in'
   end
 
-  scenario "finding recipes" do
+  scenario 'finding recipes' do
     visit '/'
 
-    click_on "Search"
+    click_on 'Search'
 
-    within(".search form") do
+    within('.search form') do
       fill_in 'keywords', with: 'baked'
-      click_on "Search"
+      click_on 'Search'
     end
-  
-    expect(page).to have_content("Baked Potato")
-    expect(page).to have_content("Baked Brussel Sprouts")
 
-    click_on "Search"
+    expect(page).to have_content('Baked Potato')
+    expect(page).to have_content('Baked Brussel Sprouts')
 
-    within(".search form") do
+    click_on 'Search'
+
+    within('.search form') do
       fill_in 'keywords', with: 'RoBake'
-      click_on "Search"
+      click_on 'Search'
     end
 
-    expect(page).not_to have_content("Baked Potato")
+    expect(page).not_to have_content('Baked Potato')
   end
 end

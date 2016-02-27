@@ -10,7 +10,7 @@ RSpec.describe DashboardController, type: :controller do
   end
 
   describe "GET 'show'" do
-    it "returns http success" do
+    it 'returns http success' do
       get 'index'
 
       expect(response).to be_success

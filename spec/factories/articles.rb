@@ -2,13 +2,13 @@
 
 FactoryGirl.define do
   factory :article do
-    sequence(:entry_id)  { |n| "ENTRY_#{n}" }
+    sequence(:entry_id) { |n| "ENTRY_#{n}" }
 
     uri          'http://url'
     description  'description'
     title        'title'
     content      {}
-    categories   ['cat1', 'cat2']
+    categories   %w(cat1 cat2)
     author       'Author'
     published_at Time.now.utc
 

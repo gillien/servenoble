@@ -9,10 +9,10 @@ RSpec.describe AdminSource do
 
   describe 'Source synchronization' do
     before :each do
-      expect_any_instance_of(SourceServices::Synchronize).
-        to receive(:call).and_return 1
+      expect_any_instance_of(SourceServices::Synchronize)
+        .to receive(:call).and_return 1
     end
 
-    it { expect(upmin.get_last_articles).to eq '1 article(s) created' }
+    it { expect(upmin.last_articles).to eq '1 article(s) created' }
   end
 end

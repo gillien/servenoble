@@ -1,0 +1,36 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'spec/teaspoon_env.rb'
+    - 'custom_plan.rb'
+
+# Commonly used screens these days easily fit more than 80 characters.
+Metrics/LineLength:
+  Max: 99
+
+# Too short methods lead to extraction of single-use methods, which can make
+# the code easier to read (by naming things), but can also clutter the class
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/AbcSize:
+  Max: 30
+
+CaseIndentation:
+  # Valid values are: case, end
+  IndentWhenRelativeTo: end
+  IndentOneStep: true
+
+# Removing Blocks Cop for RSpec
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+
+# Displaying arguments on same column is more readable for factories
+SpaceBeforeFirstArg:
+  Exclude:
+    - 'spec/factories/*'

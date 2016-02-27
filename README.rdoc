@@ -18,3 +18,8 @@ NB : you will need to add your local public key into the production server, and 
 
 Install nodejs :
 sudo apt-get install nodejs
+
+
+Install libpq-dev
+the gem pg require to have libpq installed. run the command below :
+sudo apt-get install libpq-dev

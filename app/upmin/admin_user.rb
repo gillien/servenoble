@@ -1,3 +1,5 @@
+##
+# Administration for User
 class AdminUser < Upmin::Model
   form_attributes :email
   attributes      :email, :last_sign_in_at

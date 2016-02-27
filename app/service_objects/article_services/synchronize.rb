@@ -1,8 +1,10 @@
 require 'net/http'
 
 module ArticleServices
+  ##
+  # Synchronize number of shared for each social media (Facebook, linkedin and twitter)
+  # For each of them, we do a HTTP GET
   class Synchronize
-
     attr_reader :article
 
     def initialize(article)
@@ -26,6 +28,7 @@ module ArticleServices
     end
 
     private
+
     def facebook(uri)
       social_service_call("http://graph.facebook.com/?id=#{uri}")['shares']
     end
@@ -35,18 +38,17 @@ module ArticleServices
     end
 
     def twitter(uri)
-      social_service_call("https://www.linkedin.com/countserv/count/share?url=#{uri}&format=json")['count']
+      social_service_call(
+        "https://www.linkedin.com/countserv/count/share?url=#{uri}&format=json")['count']
     end
 
     def social_service_call(uri)
-      begin
-        parsed_uri  = URI.parse(uri)
-        request     = Net::HTTP.get(parsed_uri)
+      parsed_uri  = URI.parse(uri)
+      request     = Net::HTTP.get(parsed_uri)
 
-        JSON.parse(request)
-      rescue
-        {}
-      end
+      JSON.parse(request)
+    rescue
+      {}
     end
   end
 end
