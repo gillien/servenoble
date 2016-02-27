@@ -4,5 +4,7 @@ languages:
   JavaScript: false
   PHP: false
   Python: false
-# exclude_paths:
-# - "foo/bar.rb"
+
+exclude_paths:
+  - "spec/**/*"
+  - "vendor/**/*"
