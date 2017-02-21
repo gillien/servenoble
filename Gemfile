@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.2.4'
+ruby '2.3.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.7.1'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -24,9 +24,9 @@ group :assets do
 end
 
 group :production do
-  gem 'rails_12factor'
-  gem 'newrelic_rpm'
   gem 'aws-sdk'
+  gem 'newrelic_rpm'
+  gem 'rails_12factor'
 end
 
 gem 'devise'
@@ -36,26 +36,25 @@ gem 'upmin-admin'
 
 gem 'pg_search'
 
+gem 'daemons'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'delayed_job_web'
-gem 'daemons'
 
-gem 'workless'
 gem 'colorize'
+gem 'workless'
 
 # Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]
 gem 'pg'
 
+gem 'bower-rails'
 gem 'envb-rails'
 gem 'jbuilder'
-gem 'bower-rails'
-gem 'angular-rails-templates'
 gem 'non-stupid-digest-assets'
 
 # Whenever is a Ruby gem that provides a clear syntax for writing and deploying cron jobs.
-gem 'whenever', require: false
 gem 'rufus-scheduler'
+gem 'whenever', require: false
 
 gem 'language_list' # List languages we could use into our system and even more...
 
@@ -76,18 +75,16 @@ gem 'rubocop', require: false
 gem 'capistrano-rbenv', github: 'capistrano/rbenv'
 
 group :development, :test do
-  gem 'pry-rails'
-  gem 'binding_of_caller'
-  gem 'zeus'
   gem 'better_errors'
-  gem 'poltergeist'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'codeclimate-test-reporter'
+  gem 'binding_of_caller'
   gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'codeclimate-test-reporter'
   gem 'database_cleaner'
-  gem 'teaspoon-jasmine'
+  gem 'factory_girl_rails'
   gem 'phantomjs'
-  gem 'mailcatcher'
+  gem 'poltergeist'
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'selenium-webdriver'
+  gem 'teaspoon-jasmine'
 end

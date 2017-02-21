@@ -22,7 +22,7 @@ Metrics/AbcSize:
 
 CaseIndentation:
   # Valid values are: case, end
-  IndentWhenRelativeTo: end
+  EnforcedStyle: end
   IndentOneStep: true
 
 # Removing Blocks Cop for RSpec
